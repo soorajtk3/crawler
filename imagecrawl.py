@@ -13,7 +13,7 @@ def get_image(site_url):
         "div", {"class": "GalleryItems-module__searchContent___DbMmK"})
     link = gallery.find_all("a")
     for i in link:
-        ret.append((i['href']))
+        ret.append((i.text, i['href']))
     return ret
 
 
@@ -21,14 +21,18 @@ def image_download(url):
     ret = []
     r = requests.get(url=url, headers=header)
     soup = BeautifulSoup(r.content, features="html.parser")
+    image_div = soup.find("img", {"class": "AssetCard-module__image___dams4"})
+    x = image_div['src']
+    print(x, "\n")
+    return x
 
 
 def main():
-    amir = get_image("https://www.gettyimages.in/photos/aamir-khan-actor")
+    links = get_image("https://www.gettyimages.in/photos/aamir-khan-actor")
     head = "https://www.gettyimages.in"
-    for i in amir:
-        print(head+i,
-              "\n")
+    for name, link in links:
+        # print(name, "   :   ",head+link)
+        image_download(head+link)
 
 
 if __name__ == "__main__":
