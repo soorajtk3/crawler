@@ -17,6 +17,12 @@ def get_image(site_url):
     return ret
 
 
+def image_download(url):
+    ret = []
+    r = requests.get(url=url, headers=header)
+    soup = BeautifulSoup(r.content, features="html.parser")
+
+
 def main():
     amir = get_image("https://www.gettyimages.in/photos/aamir-khan-actor")
     head = "https://www.gettyimages.in"
