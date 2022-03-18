@@ -15,3 +15,15 @@ def get_image(site_url):
     for i in link:
         ret.append((i['href']))
     return ret
+
+
+def main():
+    amir = get_image("https://www.gettyimages.in/photos/aamir-khan-actor")
+    head = "https://www.gettyimages.in"
+    for i in amir:
+        print(head+i,
+              "\n")
+
+
+if __name__ == "__main__":
+    main()
