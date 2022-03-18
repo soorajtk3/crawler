@@ -32,7 +32,6 @@ def image_download(url):
 def main():
     links = get_image("https://www.gettyimages.in/photos/aamir-khan-actor")
     head = "https://www.gettyimages.in"
-    os.mkdir("images")
 
     for name, link in links:
         wget.download(image_download(head+link))
